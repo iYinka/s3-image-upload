@@ -27,18 +27,6 @@ jobs:
         run: npm install
         working-directory: back
 
-      - name: Build backend
-        run: npm run build
-        working-directory: back
-
-      - name: Install frontend dependencies
-        run: npm install
-        working-directory: front
-
-      - name: Build frontend
-        run: npm run build
-        working-directory: front
-
       - name: Upload code to EC2
         uses: appleboy/ssh-action@v0.1.1
         with:
