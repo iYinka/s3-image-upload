@@ -3,7 +3,7 @@ name: Generate S3 Upload URL
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   generate-url:
