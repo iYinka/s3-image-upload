@@ -1,0 +1,26 @@
+name: Generate S3 Upload URL
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-url:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::534108746974:role/test-image-bkt-role
+          aws-region: "us-east-2"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate upload URL
+        run: node s3.js
