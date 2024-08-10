@@ -86,4 +86,4 @@ jobs:
           - name: Delete old container
             run: docker rm -f s3loader
           - name: Run docker container
-            run: docker run -d -p 8080:8080 --name s3loader public.ecr.aws/a2e3r5u9/s3loader
+            run: docker run -d -p 8080:8080 --name s3loader public.ecr.aws/a2e3r5u9/s3loader:969c412384e945cd3448f41d66f11f4519054d49
