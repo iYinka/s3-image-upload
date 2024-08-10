@@ -30,7 +30,7 @@ jobs:
               uses: aws-actions/configure-aws-credentials@v4
               with:
                 role-to-assume: arn:aws:iam::534108746974:role/Docker-S3-role
-                aws-region: us-east-2
+                aws-region: us-east-1
 
              # Hello from AWS: WhoAmI
             - name: Sts GetCallerIdentity
