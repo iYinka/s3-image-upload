@@ -4,7 +4,7 @@ FROM node:13-alpine
 RUN mkdir -p /app
 
 COPY . /app
-COPY package.json /app/back
+COPY /back/package.json /app/back
 # set default dir so that next commands executes in /home/app dir
 WORKDIR /app/back
 # will execute npm install in /home/app because of WORKDIR
