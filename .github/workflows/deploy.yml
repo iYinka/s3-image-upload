@@ -7,7 +7,7 @@ on:
 
 permissions:
  id-token: write
- contents: read #This is required for actions/checkout@v2
+ contents: read #This's required for actions/checkout@v2
 
 jobs:
   deploy:
@@ -31,7 +31,7 @@ jobs:
         uses: appleboy/ssh-action@v0.1.1
         with:
           host: ${{ secrets.EC2_PUBLIC_IP }}
-          username: root  # or the username you use for EC2.
+          username: ubuntu  # or the username you use for EC2.
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /image_uploader/app
