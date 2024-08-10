@@ -81,12 +81,7 @@ jobs:
         runs-on: self-hosted
         steps:
           - name: Pull image from docker hub
-            env:
-               REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
-               REGISTRY_ALIAS: a2e3r5u9
-               REPOSITORY: s3loader
-               IMAGE_TAG: ${{ github.sha }}
-            run:  docker pull $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
+            run:  docker pull public.ecr.aws/a2e3r5u9/s3loader:969c412384e945cd3448f41d66f11f4519054d49
 
           - name: Delete old container
             run: docker rm -f s3loader
