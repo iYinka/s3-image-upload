@@ -59,7 +59,7 @@ jobs:
         runs-on: self-hosted
         steps:
           - name: Pull image from docker hub
-            run: docker pull public.ecr.aws/a2e3r5u9/s3loader:latest
+            run: docker pull public.ecr.aws/a2e3r5u9/s3loader:74ea50ceb23f8a9fa1b4bb419483f3ff82d0f5c8
           - name: Delete old container
             run: docker rm -f s3loader
           - name: Run docker container
