@@ -14,8 +14,30 @@ permissions:
 
 
 jobs:
+    generate-s3-url:
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: back
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+
+        - name: Set up AWS credentials
+          uses: aws-actions/configure-aws-credentials@v4
+          with:
+            role-to-assume: arn:aws:iam::534108746974:role/test-image-bkt-role
+            aws-region: "us-east-2"
+
+        - name: Install dependencies
+          run: npm install
+
+        - name: Generate upload URL
+          run: node s3.js
+
     Docker-Image:
         name: Docker Image Build and Push to ECR
+        needs: generate-s3-url
         runs-on: ubuntu-latest
         defaults:
           run:

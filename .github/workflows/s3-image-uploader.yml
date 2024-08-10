@@ -3,7 +3,7 @@ name: Generate S3 Upload URL
 on:
   push:
     branches:
-      - master
+      - main
 
 permissions:
  id-token: write
