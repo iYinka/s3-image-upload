@@ -8,7 +8,7 @@ const randomBytes = promisify(crypto.randomBytes);
 
 dotenv.config();
 
-const region = "us-west-2";
+const region = "us-east-2";
 const bucketName = "test-image-bkt";
 
 // Create S3 client instance without explicit credentials
@@ -24,10 +24,11 @@ export async function generateUploadURL() {
     const params = {
         Bucket: bucketName,
         Key: imageName,
-        Expires: 60,
+        ContentType: "image/jpeg",
+        // Expires: 60,
     };
 
     const command = new PutObjectCommand(params);
-    const uploadURL = await getSignedUrl(s3, command, { expiresIn: 60 });
+    const uploadURL = await getSignedUrl(s3, command, { expiresIn: 3600 });
     return uploadURL;
 }
