@@ -76,6 +76,10 @@ jobs:
                 docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG .
                 docker push $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG
 
+            - name: Set output tag
+              id: set-tag
+              run: echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
+
     deploy:
         needs: Docker-Image
         runs-on: self-hosted
@@ -87,4 +91,5 @@ jobs:
           - name: Delete old container
             run: docker rm -f s3loader
           - name: Run docker container
-            run: docker run -d -p 8080:8080 --name s3loader public.ecr.aws/a2e3r5u9/s3loader:969c412384e945cd3448f41d66f11f4519054d49
+            run:  docker run -d -p 8080:8080 --name s3loader public.ecr.aws/a2e3r5u9/s3loader:${{ env.IMAGE_TAG }}
+
