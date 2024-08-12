@@ -17,4 +17,4 @@ COPY front/ ./public/
 EXPOSE 8080
 
 # Start the backend server
-CMD ["node", "/app/server.js"]
+CMD ["node", "server.js"]
