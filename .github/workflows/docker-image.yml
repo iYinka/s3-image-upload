@@ -85,7 +85,7 @@ jobs:
         runs-on: self-hosted
         steps:
           - name: Pull image from docker hub
-            run:  docker pull public.ecr.aws/a2e3r5u9/s3loader:969c412384e945cd3448f41d66f11f4519054d49
+            run:  docker pull public.ecr.aws/a2e3r5u9/s3loader:${{ env.IMAGE_TAG }}
           - name: Stop running container/image
             run:  docker stop s3loader || true
           - name: Delete old container
